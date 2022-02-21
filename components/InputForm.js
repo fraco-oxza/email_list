@@ -24,12 +24,12 @@ export default function InputForm({ updateEmails }) {
     if (name === "") {
       setError("Por favor introduzca un nombre");
       return;
-    } else if (email === "") {
+    }
+    if (email === "") {
       setError("Por favor introduzca un email");
       return;
-    } else {
-      setError("");
     }
+    setError("");
 
     fetch("/api/email", {
       method: "POST",
