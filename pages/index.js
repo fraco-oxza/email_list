@@ -9,6 +9,14 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [emails, setEmails] = useState([]);
 
+  const updateEmails = () => {
+    fetch("/api/email").then((emails) => {
+      emails.json().then((val) => {
+        setEmails(Object.values(val));
+      });
+    });
+  };
+
   const handleChangeName = (event) => {
     setName(event.target.value);
   };
@@ -38,14 +46,6 @@ export default function Home() {
     setEmail("");
     setName("");
     setTimeout(updateEmails, 200);
-  };
-
-  const updateEmails = () => {
-    fetch("/api/email").then((emails) => {
-      emails.json().then((val) => {
-        setEmails(Object.values(val));
-      });
-    });
   };
 
   useEffect(() => {
