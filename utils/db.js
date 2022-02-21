@@ -20,12 +20,12 @@ export async function getEmail(id) {
   await client.connect();
   const db = client.db("email_list_app");
 
-  return await db.collection("emails").findOne({ _id: new ObjectId(id) });
+  return db.collection("emails").findOne({ _id: new ObjectId(id) });
 }
 
 export async function addEmail({ name, email }) {
   await client.connect();
   const db = client.db("email_list_app");
 
-  return await db.collection("emails").insertOne({ name, email });
+  return db.collection("emails").insertOne({ name, email });
 }
