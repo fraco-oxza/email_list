@@ -1,8 +1,7 @@
 import Head from "next/head";
-import React from "react";
 import styles from "../styles/Home.module.scss";
 
-import { useState, useEffect, useCallback } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -10,8 +9,8 @@ export default function Home() {
   const [emails, setEmails] = useState([]);
 
   const updateEmails = () => {
-    fetch("/api/email").then((emails) => {
-      emails.json().then((val) => {
+    fetch("/api/email").then((data) => {
+      data.json().then((val) => {
         setEmails(Object.values(val));
       });
     });
@@ -92,10 +91,10 @@ export default function Home() {
         </form>
         <div>
           <ul className={styles.emailList}>
-            {emails.map((email) => (
-              <li key={email._id}>
+            {emails.map((user) => (
+              <li key={user._id}>
                 <span>
-                  {email.name}, <b>{email.email}</b>
+                  {user.name}, <b>{user.email}</b>
                 </span>
               </li>
             ))}
