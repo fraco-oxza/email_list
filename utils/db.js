@@ -1,8 +1,17 @@
+/*
+ * File for database-related functions
+ * and variables
+ */
+
 import { MongoClient, ObjectId } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
+/** Function to get all emails
+ *  in the database
+ *  @returns all emails
+ */
 export async function getEmails() {
   await client.connect();
   const db = client.db("email_list_app");
@@ -16,6 +25,11 @@ export async function getEmails() {
   return emails;
 }
 
+/* Function to get a specific email
+ * from database
+ * @param id Id of document as plain text
+ * @return one document that match with the id
+ */
 export async function getEmail(id) {
   await client.connect();
   const db = client.db("email_list_app");
@@ -23,6 +37,11 @@ export async function getEmail(id) {
   return db.collection("emails").findOne({ _id: new ObjectId(id) });
 }
 
+/* Function to add a document to the database
+ * @param name name of user
+ * @param email email of user
+ * @return result of operation
+ */
 export async function addEmail({ name, email }) {
   await client.connect();
   const db = client.db("email_list_app");

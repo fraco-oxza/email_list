@@ -3,6 +3,11 @@ import styles from "../styles/Home.module.scss";
 
 import { React, useState, useEffect, useCallback } from "react";
 
+/*
+ * Function in charge of produce the index page
+ * and all the logic of the application
+ * @returns page as JSX
+ */
 export default function Home() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
