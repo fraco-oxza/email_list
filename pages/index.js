@@ -1,9 +1,8 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.scss";
 
 import { React, useState, useEffect, useCallback } from "react";
 
-function inputForm() {
+function InputForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -65,7 +64,7 @@ function inputForm() {
   );
 }
 
-function userEmailList() {
+function UserEmailList() {
   const [emails, setEmails] = useState([]);
 
   /* Function to sync the list of emails,
@@ -105,8 +104,8 @@ function userEmailList() {
 export default function Home() {
   return (
     <main className={styles.main}>
-      {inputForm()}
-      {userEmailList()}
+      {InputForm()}
+      {UserEmailList()}
     </main>
   );
 }
