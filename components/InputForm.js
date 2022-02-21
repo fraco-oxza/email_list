@@ -1,4 +1,4 @@
-import { React, useCallback, useState } from "react";
+import { React, useCallback, useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 
 /*
@@ -10,6 +10,7 @@ import styles from "../styles/Home.module.scss";
 export default function InputForm({ updateEmails }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
   const handleChangeName = useCallback((event) => {
     setName(event.target.value);
@@ -21,12 +22,13 @@ export default function InputForm({ updateEmails }) {
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
     if (name === "") {
-      alert("Por favor introduzca un nombre");
+      setError("Por favor introduzca un nombre");
       return;
-    }
-    if (email === "") {
-      alert("Por favor introduzca un email");
+    } else if (email === "") {
+      setError("Por favor introduzca un email");
       return;
+    } else {
+      setError("");
     }
 
     fetch("/api/email", {
@@ -40,6 +42,9 @@ export default function InputForm({ updateEmails }) {
     setEmail("");
     setName("");
     setTimeout(updateEmails, 200);
+  });
+  useEffect(() => {
+    document.setError = setError;
   });
 
   return (
@@ -64,6 +69,11 @@ export default function InputForm({ updateEmails }) {
         onChange={handleChangeEmail}
       />
       <br />
+      {!(error === "") ? (
+        <span className={styles.alert}>Error: {error}</span>
+      ) : (
+        ""
+      )}
       <input type="submit" name="su" id={styles.send} value="Send Request" />
     </form>
   );
