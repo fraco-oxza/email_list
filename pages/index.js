@@ -26,7 +26,7 @@ export default function Home() {
       alert("Por favor introduzca un email");
       return;
     }
-    
+
     fetch("/api/email", {
       method: "POST",
       headers: {
