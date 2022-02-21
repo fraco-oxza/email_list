@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 import styles from "../styles/Home.module.scss";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -17,14 +17,14 @@ export default function Home() {
     });
   };
 
-  const handleChangeName = (event) => {
+  const handleChangeName = useCallback((event) => {
     setName(event.target.value);
-  };
-  const handleChangeEmail = (event) => {
+  });
+  const handleChangeEmail = useCallback((event) => {
     setEmail(event.target.value);
-  };
+  });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = useCallback((event) => {
     event.preventDefault();
     if (name === "") {
       alert("Por favor introduzca un nombre");
@@ -46,7 +46,7 @@ export default function Home() {
     setEmail("");
     setName("");
     setTimeout(updateEmails, 200);
-  };
+  });
 
   useEffect(() => {
     updateEmails();
