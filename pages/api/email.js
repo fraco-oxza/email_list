@@ -4,16 +4,16 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
       if (typeof req.body._id === "undefined") {
-        let emails = await getEmails();
+        const emails = await getEmails();
         res.status(200).json({ ...emails });
       } else {
-        let email = await getEmail(req.body._id);
+        const email = await getEmail(req.body._id);
         res.status(200).json({ ...email });
       }
       break;
     }
     case "POST": {
-      let result = addEmail(req.body);
+      const result = addEmail(req.body);
 
       res.status(200).json({ result: "ok", id: result });
 
