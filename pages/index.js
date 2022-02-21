@@ -1,6 +1,5 @@
+import { React, useCallback, useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
-
-import { React, useState, useEffect, useCallback } from "react";
 
 function InputForm() {
   const [name, setName] = useState("");

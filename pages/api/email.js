@@ -1,4 +1,4 @@
-import { getEmails, getEmail, addEmail } from "../../utils/db";
+import { addEmail, getEmail, getEmails } from "../../utils/db";
 
 export default async function handler(req, res) {
   switch (req.method) {
