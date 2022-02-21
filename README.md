@@ -1,3 +1,6 @@
+[![DeepSource](https://deepsource.io/gh/fraco-oxza/email_list.svg/?label=active+issues&show_trend=true&token=eSp56EolyPH_b5weqvwRd77m)](https://deepsource.io/gh/fraco-oxza/email_list/?ref=repository-badge)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
