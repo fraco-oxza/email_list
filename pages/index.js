@@ -1,7 +1,7 @@
-import { React, useState, useEffect } from "react";
+import { React, useCallback, useState } from "react";
 
-import UserEmailList from "../components/UserEmailList";
 import InputForm from "../components/InputForm";
+import UserEmailList from "../components/UserEmailList";
 
 import styles from "../styles/Home.module.scss";
 
@@ -16,13 +16,13 @@ export default function Home() {
   /* Function to sync the list of emails,
    * with the database
    */
-  const updateEmails = () => {
+  const updateEmails = useCallback(() => {
     fetch("/api/email").then((data) => {
       data.json().then((val) => {
         setEmails(Object.values(val));
       });
     });
-  };
+  });
 
   return (
     <main className={styles.main}>

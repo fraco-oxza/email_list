@@ -1,5 +1,12 @@
 import { addEmail, getEmail, getEmails } from "../../utils/db";
 
+/*
+ * Handler for endpoint /api/email to
+ * return and set emails from the mongodb
+ * database
+ * @param req HTTP request
+ * @param res HTTP response
+ * */
 export default async function handler(req, res) {
   switch (req.method) {
     case "GET": {
